@@ -28,6 +28,6 @@
 require( dirname( __FILE__ ) . '/libraries/imperative/imperative.php' );
 
 require_library( 'restian', '0.3.1', __FILE__, 'libraries/restian/restian.php' );
-require_library( 'sidecar', '0.4.11', __FILE__, 'libraries/sidecar/sidecar.php' );
+require_library( 'sidecar', '0.4.12', __FILE__, 'libraries/sidecar/sidecar.php' );
 
 register_plugin_loader( __FILE__ );
