@@ -5,7 +5,7 @@ Donate link:
 Tags: analytics, chat, e-commerce, ecommerce, getshopped, real-time, realtime, shopping, statistics, store, wpec, wpecommerce
 Requires at least: 3.4
 Tested up to: 3.5.1
-Stable tag: 1.0.1
+Stable tag: 1.0.4
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -84,6 +84,15 @@ Your Lexity Live for WP e-Commerce plugin is now installed, activated, configure
 7. Your Lexity.com Live admin console within your WordPress admin console.
 
 == Changelog ==
+
+= 1.0.4 =
+* Changed code so that wp_option() settings match plugin name, i.e. 'lexity-live-for-wp-e-commerce-settings'.
+
+= 1.0.3 =
+* Forgot to update Stable tag in 1.0.2.
+
+= 1.0.2 =
+* Fixed bug introduced by fixing the uninstall special case.
 
 = 1.0.1 =
 * Used better banners for WordPress.org
