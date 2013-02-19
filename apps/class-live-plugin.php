@@ -34,4 +34,7 @@ HTML;
 HTML;
   }
 }
-new Lexity_Live_for_WPSC_Plugin();
+new Lexity_Live_for_WPSC_Plugin( array(
+  'plugin_name' => 'lexity_live_for_wp_e_commerce',
+  'plugin_slug' => 'lexity-live-for-wp-e-commerce'
+));
