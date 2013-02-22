@@ -118,7 +118,7 @@ class Lexity_WPSC_Cart_Connector extends Lexity_Cart_Connector {
    * @param $args array
    * @return array of stdClass objects
    */
-  function get_collects( $args ) {
+  function get_collects( $args = null ) {
 
     $collects = $this->_query_collects( $this->_capture_args( $args ) );
 

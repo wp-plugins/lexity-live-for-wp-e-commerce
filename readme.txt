@@ -1,17 +1,17 @@
 === Lexity Live for WP e-Commerce ===
 
 Contributors: Lexity, NewClarity, MikeSchinkel, tarasm
-Donate link:
 Tags: analytics, chat, e-commerce, ecommerce, getshopped, real-time, realtime, shopping, statistics, store, wpec, wpecommerce
 Requires at least: 3.4
 Tested up to: 3.5.1
-Stable tag: 1.0.4
-License: GPLv2 or later
+Stable tag: 1.0.5
+License: GPL v2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
 Provides real-time customer monitoring, analytics and insight to help WP e-Commerce-based store owners increase both their traffic and their sales.
 
 == Description ==
+
 The _[**Lexity Live**](http://lexity.com/apps/live) for [**WP e-Commerce**](http://getshopped.org)_ plugin for WordPress provides the following functionality:
 
 -	**See who** is in your store **_now_**, and what **products** they are picking up and putting in their shopping cart.
@@ -85,6 +85,9 @@ Your Lexity Live for WP e-Commerce plugin is now installed, activated, configure
 
 == Changelog ==
 
+= 1.0.5 =
+* Committed new version to resolve the duplicate code in /trunk/ subdirectory with 1.0.4.
+
 = 1.0.4 =
 * Changed code so that wp_option() settings match plugin name, i.e. 'lexity-live-for-wp-e-commerce-settings'.
 
@@ -100,3 +103,8 @@ Your Lexity Live for WP e-Commerce plugin is now installed, activated, configure
 
 = 1.0 =
 * Initial release.
+
+== Upgrade Notice ==
+
+= 1.0.5 =
+* Potential bug fix from version 1.0.4.
