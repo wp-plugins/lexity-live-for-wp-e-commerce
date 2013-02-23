@@ -256,7 +256,7 @@ HTML;
    *
    */
   function do_parse_request( $continue ) {
-    $api_root_regex = preg_quote( Sidecar::installed_dir() . '/lexity-api' );
+    $api_root_regex = preg_quote( trim( Sidecar::installed_dir(), '/' ) . '/lexity-api' );
     if ( preg_match( "#^{$api_root_regex}/(.*?)$#", $_SERVER['REQUEST_URI'], $matches ) ) {
       $this->initialize();
       $api_server = new Lexity_API_Server( 'wpsc', $this );
