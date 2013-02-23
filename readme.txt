@@ -4,7 +4,7 @@ Contributors: Lexity, NewClarity, MikeSchinkel, tarasm
 Tags: analytics, chat, e-commerce, ecommerce, getshopped, real-time, realtime, shopping, statistics, store, wpec, wpecommerce
 Requires at least: 3.4
 Tested up to: 3.5.1
-Stable tag: 1.0.5
+Stable tag: 1.0.6
 License: GPL v2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -84,6 +84,8 @@ Your Lexity Live for WP e-Commerce plugin is now installed, activated, configure
 7. Your Lexity.com Live admin console within your WordPress admin console.
 
 == Changelog ==
+= 1.0.6 =
+* Resolved bug with loading Lexity API.
 
 = 1.0.5 =
 * Committed new version to resolve the duplicate code in /trunk/ subdirectory with 1.0.4.
@@ -105,6 +107,9 @@ Your Lexity Live for WP e-Commerce plugin is now installed, activated, configure
 * Initial release.
 
 == Upgrade Notice ==
+
+= 1.0.6 =
+* Resolved bug with loading Lexity API.
 
 = 1.0.5 =
 * Potential bug fix from version 1.0.4.
