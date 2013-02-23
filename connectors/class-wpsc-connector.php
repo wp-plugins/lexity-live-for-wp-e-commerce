@@ -1,5 +1,9 @@
 <?php
 
+if ( ! defined( 'WPSC_FILE_PATH' ) ) {
+  Lexity_API_Server::http_error( 501, 'Not Implemented', 'WP e-Commerce plugin either not installed or not activated.' );
+}
+
 /**
  * Include wpsc classes
  */
@@ -21,7 +25,7 @@ class Lexity_WPSC_Cart_Connector extends Lexity_Cart_Connector {
   /**
    * Return array of orders matching request parameters
    *
-   * @link    http://wiki.shopify.com/Order_%28API%29
+   * @link    http://wiki.shopify.com/Order_(API)
    * @param   null|string|array $args Shopify parameters
    * @return  array stdClass objects
    */
@@ -82,7 +86,7 @@ class Lexity_WPSC_Cart_Connector extends Lexity_Cart_Connector {
   /**
    * Return array of categories matching requested criteria
    *
-   * @link    http://wiki.shopify.com/Custom_Collection_%28API%29
+   * @link    http://wiki.shopify.com/Custom_Collection_(API)
    * @param   null $args str|array Shopify request parameters
    * @return  array
    */
@@ -102,7 +106,7 @@ class Lexity_WPSC_Cart_Connector extends Lexity_Cart_Connector {
    *
    * 'nopaging' means get all custom collections.
    *
-   * @link    http://wiki.shopify.com/Custom_Collection_%28API%29
+   * @link    http://wiki.shopify.com/Custom_Collection_(API)
    * @return  int
    */
   function get_custom_collections_count() {
@@ -114,7 +118,7 @@ class Lexity_WPSC_Cart_Connector extends Lexity_Cart_Connector {
   /**
    * Return array of associations between products and custom collections by product_id or collection_id
    *
-   * @link http://wiki.shopify.com/Collect_%28API%29
+   * @link http://wiki.shopify.com/Collect_(API)
    * @param $args array
    * @return array of stdClass objects
    */
@@ -274,7 +278,7 @@ class Lexity_WPSC_Cart_Connector extends Lexity_Cart_Connector {
   /**
    * Return array of product variants.
    *
-   * @link    http://wiki.shopify.com/Product_Variant_%28API%29
+   * @link    http://wiki.shopify.com/Product_Variant_(API)
    * @param   $product_id int
    * @return  array
    */
@@ -312,7 +316,7 @@ class Lexity_WPSC_Cart_Connector extends Lexity_Cart_Connector {
   /**
    * Return variant by id
    *
-   * @link    http://wiki.shopify.com/Product_Variant_%28API%29
+   * @link    http://wiki.shopify.com/Product_Variant_(API)
    * @param   int $variant_id
    * @return  stdClass object populated with Shopify variant information
    */
@@ -377,7 +381,7 @@ class Lexity_WPSC_Cart_Connector extends Lexity_Cart_Connector {
   /**
    * Return object populated with image information with Shopify image attributes.
    *
-   * @link    http://wiki.shopify.com/Product_Image_%28API%29
+   * @link    http://wiki.shopify.com/Product_Image_(API)
    * @param   $image_id
    * @return  stdClass populated with
    */
@@ -396,7 +400,7 @@ class Lexity_WPSC_Cart_Connector extends Lexity_Cart_Connector {
   /**
    * Return object populated with information about specific order
    *
-   * @link http://wiki.shopify.com/Order_%28API%29
+   * @link http://wiki.shopify.com/Order_(API)
    * @param $order_id int
    * @return stdClass
    */
@@ -633,7 +637,7 @@ class Lexity_WPSC_Cart_Connector extends Lexity_Cart_Connector {
   /**
    * Return custom collection object by custom collection id.
    *
-   * @link    http://wiki.shopify.com/Custom_Collection_%28API%29
+   * @link    http://wiki.shopify.com/Custom_Collection_(API)
    * @param   int $product_category_id
    * @return  stdClass
    */

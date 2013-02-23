@@ -41,7 +41,7 @@ class Lexity_API_Server {
     if ( ! isset( $_SERVER['PHP_AUTH_USER'] ) || ! isset( $_SERVER['PHP_AUTH_PW'] ) ) {
       header( 'WWW-Authenticate: Basic realm="Lexity API"' );
       header( 'HTTP/1.0 401 Unauthorized' );
-      $this->_http_error(
+      self::http_error(
         401, 'Unauthorized', __( 'The credentials did not authenticate.', 'lexity' )
       );
     }
@@ -90,7 +90,7 @@ class Lexity_API_Server {
    */
   function post_script_tag( $post ) {
     if ( ! isset( $post->assets ) ) {
-      $this->_http_error(
+      self::http_error(
         400, 'Bad Request', __( 'The POSTed JSON payload did not contain an "assets" property.', 'lexity' )
       );
     } else {
@@ -98,7 +98,7 @@ class Lexity_API_Server {
       if ( isset( $script_tag->key ) && 'script' == $script_tag->key && isset( $script_tag->value ) ) {
         $this->plugin->update_script_tag( $script_tag->value );
       } else {
-        $this->_http_error(
+        self::http_error(
           400, 'Bad Request', __(
             'The POSTed JSON payload did not contain valid "key" or "script" subproperties of the "assets" property.',
             'lexity'
@@ -254,7 +254,7 @@ HTML;
     $data = array();
 
     if ( ! $this->authenticate() ) {
-      $this->_http_error(
+      self::http_error(
         401, 'Unauthorized', __( 'The credentials did not authenticate.', 'lexity' )
       );
     }
@@ -266,7 +266,7 @@ HTML;
     /**
      * Matched the /lexity-api/ URL but did not match any valid endpoint, therefore give a 404
      */
-      $this->_http_error(
+      self::http_error(
         404, 'API Endpoint Not Found',
         __( 'The URL Endpoint you requested is not valid for the Lexity API.', 'lexity' )
       );
@@ -339,12 +339,12 @@ HTML;
    * @param $description
    * @param $message
    */
-  private function _http_error( $code, $description, $message ) {
+  static function http_error( $code, $description, $message ) {
     header( "HTTP/1.1 {$code} {$description}" );
     header( "Content-Type: text/html; charset=UTF-8" );
     echo "<h1>{$code} {$description}</h1>";
     echo $message;
-    exit;
+    die(1);
   }
 }
 
