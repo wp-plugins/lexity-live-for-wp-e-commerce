@@ -3,7 +3,7 @@
  * Plugin Name: Lexity Live for WP e-Commerce
  * Plugin URI: http://lexity.com/apps/live
  * Description: Lexity Live for WP e-Commerce enables store owners to monitor their customer activity in real-time including graphs of current store visitors, products viewed and products in shopping cart; graphs of traffic and revenue over the past 12 months; charts of traffic and revenue split out by channel (e.g. Google, Facebook, Bing, etc.) and marketing insights to improve overall revenue and traffic (e.g. top keywords, top referring sites).
- * Version: 1.0.8
+ * Version: 1.0.9
  * Author: Lexity
  * Author URI: http://lexity.com
  * Text Domain: lexity
