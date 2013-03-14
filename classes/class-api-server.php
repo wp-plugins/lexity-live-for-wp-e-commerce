@@ -35,22 +35,24 @@ class Lexity_API_Server {
 
   /**
    *
-   * @see http://php.net/manual/en/features.http-auth.php
    */
   function authenticate() {
-    if ( ! isset( $_SERVER['PHP_AUTH_USER'] ) || ! isset( $_SERVER['PHP_AUTH_PW'] ) ) {
-      header( 'WWW-Authenticate: Basic realm="Lexity API"' );
-      header( 'HTTP/1.0 401 Unauthorized' );
-      self::http_error(
-        401, 'Unauthorized', __( 'The credentials did not authenticate.', 'lexity' )
-      );
+    if ( empty( $_SERVER['QUERY_STRING'] ) ) {
+      $error_message = __( 'The credentials are missing from the url', 'lexity' );
+    } else {
+      parse_str( $_SERVER['QUERY_STRING'], $query );
+      if ( empty( $query['login'] ) || empty( $query['token'] ) ) {
+        $error_message = __( 'One or more credentials are missing from url', 'lexity' );
+      }
     }
-
+    if ( isset( $error_message ) ) {
+      header( 'WWW-Authenticate: Basic realm="Lexity API"' );
+      header( 'HTTP/1.0 403 Forbidden' );
+      self::http_error( 403, 'Forbidden', $error_message );
+    }
     $credentials = $this->plugin->get_form_settings( 'account' );
-
-    return $_SERVER['PHP_AUTH_USER'] == $credentials['login'] && $_SERVER['PHP_AUTH_PW'] == $credentials['token'];
+    return $query['login'] == $credentials['login'] && $query['token'] == $credentials['token'];
   }
-
   /**
    * @return Lexity_Cart_Connector
    */
@@ -89,18 +91,18 @@ class Lexity_API_Server {
    *
    */
   function post_script_tag( $post ) {
-    if ( ! isset( $post->assets ) ) {
+    if ( ! isset( $post->asset ) ) {
       self::http_error(
-        400, 'Bad Request', __( 'The POSTed JSON payload did not contain an "assets" property.', 'lexity' )
+        400, 'Bad Request', __( 'The POSTed JSON payload did not contain an "asset" property.', 'lexity' )
       );
     } else {
-      $script_tag = $post->assets;
+      $script_tag = $post->asset;
       if ( isset( $script_tag->key ) && 'script' == $script_tag->key && isset( $script_tag->value ) ) {
         $this->plugin->update_script_tag( $script_tag->value );
       } else {
         self::http_error(
           400, 'Bad Request', __(
-            'The POSTed JSON payload did not contain valid "key" or "script" subproperties of the "assets" property.',
+            'The POSTed JSON payload did not contain valid "key" or "script" subproperties of the "asset" property.',
             'lexity'
           )
         );
@@ -161,7 +163,7 @@ class Lexity_API_Server {
     $javascript = str_replace( '"', '\"', $javascript );
     return <<<JSON
 {
-  "assets": {
+  "asset": {
     "key": "script",
     "value": "{$javascript}"
   }
@@ -255,7 +257,7 @@ HTML;
 
     if ( ! $this->authenticate() ) {
       self::http_error(
-        401, 'Unauthorized', __( 'The credentials did not authenticate.', 'lexity' )
+        403, 'Forbidden', __( 'The credentials did not authenticate.', 'lexity' )
       );
     }
 
@@ -317,17 +319,7 @@ HTML;
           echo $data;
         } else {
           header( "Content-Type: application/json; charset=UTF-8" );
-          /**
-           * @see http://labs.omniti.com/labs/jsend
-           */
           echo json_encode( $data );
-
-  //          array(
-  //            'status' => 'success',
-  //            'self'   => $this->get_route_url( $route['slug'] ),
-  //            'data'   => $data,
-  //          )
-  //        );
         }
       }
       exit;
